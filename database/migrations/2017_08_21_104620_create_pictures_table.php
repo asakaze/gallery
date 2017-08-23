@@ -8,8 +8,6 @@ use Database\Definitions\PicturesTable;
 
 class CreatePicturesTable extends Migration
 {
-
-
     public function up()
     {
         Schema::create("pictures", function (Blueprint $table) {

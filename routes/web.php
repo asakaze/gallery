@@ -18,5 +18,5 @@ Route::resource("albums", "AlbumController", [
 ]);
 
 Route::resource("pictures", "PictureController", [
-    "only" => ["destroy", "create", "store"]
+    "only" => ["destroy", "store"]
 ]);
