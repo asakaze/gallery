@@ -13,6 +13,11 @@ use Database\Definitions\AlbumsTable;
 
 class AlbumController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
         $albums = Album::all();
@@ -20,11 +25,23 @@ class AlbumController extends Controller
         return View::make("album.index")->with("albums", $albums);
     }
 
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function create()
     {
         return View::make("album.create");
     }
 
+    /**
+     * Store a newly created resource in storage.
+     * Validates if name is alphanumeric, unique and within length limit
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function store(Request $request)
     {
         $max_length = AlbumsTable::NAME_LENGTH;
@@ -48,6 +65,12 @@ class AlbumController extends Controller
         }
     }
 
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function show($id)
     {
         $album = Album::find($id);
@@ -55,6 +78,12 @@ class AlbumController extends Controller
         return View::make("album.show")->with("album", $album);
     }
 
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function destroy($id)
     {
         $album = Album::find($id);

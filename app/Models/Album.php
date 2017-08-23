@@ -16,9 +16,13 @@ class Album extends Model
         "name"
     ];
 
+    /**
+     * Get related pictures
+     *
+     * @return Illuminate\Database\Eloquent\Relations\HasMany;
+     */
     public function pictures() : HasMany
     {
-
         return $this->hasMany(Picture::class);
     }
 }

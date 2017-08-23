@@ -17,6 +17,11 @@ class Picture extends Model
         "album_id"
     ];
 
+    /**
+     * Get parent album
+     *
+     * @return Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function album() : BelongsTo
     {
         return $this->belongsTo(Album::class);

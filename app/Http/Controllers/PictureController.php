@@ -13,6 +13,13 @@ use Database\Definitions\PicturesTable;
 
 class PictureController extends Controller
 {
+    /**
+     * Store a newly created resource in storage.
+     * Validates if url is witin length limit and point to image file
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function store(Request $request)
     {
         $max_length = PicturesTable::URL_LENGTH;
@@ -34,6 +41,7 @@ class PictureController extends Controller
             ->withErrors($validator)
             ->withInput();
         } else {
+
             $picture = new Picture;
             $picture->url = Input::get("url");
             $picture->album_id = Input::get("album_id");
@@ -43,6 +51,12 @@ class PictureController extends Controller
         }
     }
 
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function destroy($id)
     {
         $picture = Picture::find($id);
